@@ -5,13 +5,12 @@ import "math"
 func MultiplyMultipleMatrices(matrix [][4][4]float64) ([4][4]float64, [][4][4]float64) {
 	var result [4][4]float64 = matrix[0]
 	var course_decision = [][4][4]float64{}
-	course_decision = append(course_decision, matrix[0])
+	course_decision = append(course_decision, result)
 	for i := 1; i < len(matrix); i++ {
-		course_decision = append(course_decision, result)
+		course_decision = append(course_decision, matrix[i])
 		result = MultiplyMatrix(result, matrix[i])
-		if i != len(matrix) {
-			course_decision = append(course_decision, result)
-		}
+		course_decision = append(course_decision, result)
+
 	}
 
 	// multiplying matrices and storing result

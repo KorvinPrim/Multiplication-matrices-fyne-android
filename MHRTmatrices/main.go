@@ -32,13 +32,13 @@ func collectres(result [4][4]float64, course_decision [][4][4]float64, diu []int
 	res_for_w := ""
 	todos.Append(NewTodo(""))
 	todos.Append(NewTodo("Decision"))
-	fmt.Println("The course decision of multiplication of matrix")
+
 	qvestion := map[int]string{}
 	for i := 0; i < len(diu); i++ {
 		str_d := strings.Split(fmt.Sprintf("%v", diu[i]), "  - ")[0]
 		parse_d := fmt.Sprintf("%v", str_d)
 		qvestion[i] = parse_d
-		fmt.Println(qvestion)
+
 	}
 
 	todos.Append(NewTodo(fmt.Sprintf("%v\n", qvestion[0])))
@@ -54,12 +54,12 @@ func collectres(result [4][4]float64, course_decision [][4][4]float64, diu []int
 
 	res_for_w = ""
 
-	for m := 1; m < len(course_decision); m++ {
+	for m := 0; m < len(course_decision); m++ {
 		if m%2 != 0 && m != 0 {
 			if m == 1 {
 				todos.Append(NewTodo(qvestion[m] + "\n"))
 			} else {
-				todos.Append(NewTodo(qvestion[m/2] + "\n"))
+				todos.Append(NewTodo(qvestion[int(m-m/2)] + "\n"))
 			}
 		} else {
 			todos.Append(NewTodo("Result of multiplication"))
@@ -70,7 +70,7 @@ func collectres(result [4][4]float64, course_decision [][4][4]float64, diu []int
 			}
 			res_for_w += "\n"
 		}
-		fmt.Println(course_decision)
+
 		todos.Append(NewTodo(res_for_w))
 		todos.Append(NewTodo(""))
 		res_for_w = ""
@@ -79,7 +79,6 @@ func collectres(result [4][4]float64, course_decision [][4][4]float64, diu []int
 	todos.Append(NewTodo("The final results of matrix multiplication"))
 	res_for_w = ""
 
-	fmt.Println(result)
 	for i := 0; i < 4; i++ {
 		for j := 0; j < 4; j++ {
 			res_for_w += fmt.Sprintf("%0.3f\t", result[i][j])
